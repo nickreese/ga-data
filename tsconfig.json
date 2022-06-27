@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ES2019",
+    "outDir": "build",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "declaration": true,
+    "inlineSourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "preserveValueImports": false,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "traceResolution": false,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "pretty": true,
+    "allowJs": true,
+    "lib": ["es2019"],
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "preserveWatchOutput": true,
+    "noEmit": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules/**", "build", "__tests__/**"],
+  "compileOnSave": false
+}
