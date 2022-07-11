@@ -192,7 +192,7 @@ CREATE TABLE app_user(
 );
 
 
-CREATE TABLE community_message_category(
+CREATE TABLE community_post_category(
     id SERIAL PRIMARY KEY,
     title_text_content_id INTEGER NOT NULL,
     last_updated timestamptz NULL DEFAULT now(),
@@ -239,6 +239,17 @@ CREATE TABLE community_post(
 );
 
 
+CREATE TABLE emoji(
+    id SERIAL PRIMARY KEY,
+    -- text_content_id INTEGER NOT NULL,
+    emoji TEXT NOT NULL,
+    last_updated timestamptz NULL DEFAULT now(),
+	created_at timestamptz NULL DEFAULT now()
+);
+
+
+
+
 -- permissions:
 -- RATE: verified locals can rate any message that isn't theirs, and is not deleted, and is not expired, and that they haven't already rated.
 -- If the user has already rated, the button should correspond. 
@@ -274,19 +285,11 @@ CREATE TABLE commerical_post(
     expires_at TIMESTAMPTZ NULL DEFAULT now() + interval '7 days',
     last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now(),
-    FOREIGN KEY (community_post_category_id) REFERENCES community_post_category(id) ON UPDATE CASCADE,
+    -- FOREIGN KEY (community_post_category_id) REFERENCES community_post_category(id) ON UPDATE CASCADE,
     FOREIGN KEY (language_id) REFERENCES language(id) ON UPDATE CASCADE,
     FOREIGN KEY (author_app_user_id) REFERENCES app_user(id) ON UPDATE CASCADE
 );
 
-
-CREATE TABLE emoji(
-    id SERIAL PRIMARY KEY,
-    -- text_content_id INTEGER NOT NULL,
-    emoji TEXT NOT NULL,
-    last_updated timestamptz NULL DEFAULT now(),
-	created_at timestamptz NULL DEFAULT now(),
-);
 
 
 -- user votes

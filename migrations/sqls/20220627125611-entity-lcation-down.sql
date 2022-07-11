@@ -1,25 +1,31 @@
 /* Replace with your SQL commands */
 
-DROP TABLE location_tag CASCADE;
-DROP TABLE tag CASCADE;
-DROP TABLE location CASCADE;
-DROP TABLE entity CASCADE;
-DROP table hotel CASCADE;
+DROP TABLE if exists  location_tag CASCADE;
+DROP TABLE if exists  tag CASCADE;
+DROP TABLE if exists  location CASCADE;
+DROP TABLE if exists  entity CASCADE;
+DROP table if exists  hotel CASCADE;
 
 
-DROP table government CASCADE;
-DROP table restaurant CASCADE;
+DROP table if exists  government CASCADE;
+DROP table if exists  restaurant CASCADE;
 
-DROP table website CASCADE;
-DROP table region CASCADE;
+DROP table if exists  website CASCADE;
+DROP table if exists  region CASCADE;
 
-DROP table app_user_email CASCADE;
-DROP table app_user_phone CASCADE;
-DROP table app_user CASCADE;
+DROP table if exists  app_user_email CASCADE;
+DROP table if exists  app_user_phone CASCADE;
+DROP table if exists  app_user CASCADE;
 
-DROP TYPE app_user_view_enum;
+DROP TYPE  if exists app_user_view_enum;
 
 
-DROP TABLE community_post CASCADE;
-DROP TABLE community_post_category CASCADE;
-DROP TABLE community_post_app_user_emoji;
+DROP TABLE if exists  community_post CASCADE;
+DROP TABLE if exists  community_post_category CASCADE;
+DROP TABLE if exists  community_post_app_user_emoji;
+
+DROP TABLE if exists  commercial_post;
+
+DROP TABLE IF EXISTS emoji;
+
+DROP TABLE IF EXISTS commerical_post;
