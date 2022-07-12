@@ -37,21 +37,24 @@ CREATE TABLE website (
 CREATE TABLE restaurant(
     id SERIAL PRIMARY KEY,
     menu_url text,
-
+    opening_closing_time text,
+    stars int add constraint chk_start_limit check(stars between 0 and 5),
     last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now()
 );
 
 CREATE TABLE government(
     id SERIAL PRIMARY KEY,
-    
+    opening_closing_time text,
     last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now()
 );
 
 CREATE TABLE hotel(
     id SERIAL PRIMARY KEY,
-    
+    services text,
+    stars int add constraint chk_start_limit check(stars between 0 and 5),
+    avg_price int,
     last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now()
 );
@@ -63,6 +66,14 @@ CREATE TABLE tag (
     last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now()
 );
+
+CREATE TABLE entity_contact (
+    id SERIAL PRIMARY KEY,
+    email text,
+    phone text,
+    last_updated timestamptz NULL DEFAULT now(),
+	created_at timestamptz NULL DEFAULT now()
+)
 
 -----
 -- Entity:
@@ -80,6 +91,7 @@ CREATE TABLE entity (
     hotel_id INTEGER,
     government_id INTEGER,
     restaurant_id INTEGER,
+    contact_id INTEGER,
 	last_updated timestamptz NULL DEFAULT now(),
 	created_at timestamptz NULL DEFAULT now(),
 
@@ -88,7 +100,8 @@ CREATE TABLE entity (
     FOREIGN KEY (government_id) REFERENCES government(id) ON UPDATE CASCADE,
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(id) ON UPDATE CASCADE,
 
-    FOREIGN KEY (website_id) REFERENCES website(id) ON UPDATE CASCADE
+    FOREIGN KEY (website_id) REFERENCES website(id) ON UPDATE CASCADE,
+    FOREIGN KEY (contact_id) REFERENCES entity_contact(id) ON UPDATE CASCADE
 );
 
 ----- 
